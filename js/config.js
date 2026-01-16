@@ -7,19 +7,18 @@ export const CONFIG = {
   },
 
   HEADERS: {
-  EMP_ID: 0,        // Emp ID
-  NAME: 1,          // Emp Name
-  DESIGNATION: 2,   // Designation
-  GROUP: 3,         // Group (NEW)
-  PLACE: 4,         // Branch → Place
-  GENDER: 5,
-  DOB: 6,
-  RETIREMENT: 7,
-  DOJ_BRANCH: 8,
-  DOJ_ESIC: 9,
-  CONTACT: 10
-}
-
+    EMP_ID: 0,
+    NAME: 1,
+    DESIGNATION: 2,
+    GROUP: 3,
+    PLACE: 4,
+    GENDER: 5,
+    DOB: 6,
+    RETIREMENT: 7,
+    DOJ_BRANCH: 8,
+    DOJ_ESIC: 9,
+    CONTACT: 10
+  },
 
   HEADER_COLORS: [
     "Tomato",
@@ -30,4 +29,3 @@ export const CONFIG = {
     "#e8eaf6"
   ]
 };
-
