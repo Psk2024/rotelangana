@@ -4,21 +4,31 @@ import { renderDirectory } from "./renderer.js";
 import { debounce } from "./utils.js";
 
 const container = document.getElementById("employeeTableContainer");
-const search = document.getElementById("searchInput");
+const searchInput = document.getElementById("searchInput");
 
 async function init() {
-  await loadExcelData();
-  applyFilters();
+  try {
+    await loadExcelData();
+    applyFilters();
+  } catch (e) {
+    container.innerHTML = `<p style="padding:20px;color:red;">
+      Unable to load employee data.
+    </p>`;
+  }
 }
 
 function applyFilters() {
-  state.searchTerm = search.value.trim().toLowerCase();
+  const term = searchInput.value.trim().toLowerCase();
   state.filteredData = state.allData.filter(row =>
-    row.join(" ").toLowerCase().includes(state.searchTerm)
+    row.join(" ").toLowerCase().includes(term)
   );
+
+  document.getElementById("totalCount").textContent = state.totalCount;
+  document.getElementById("filteredCount").textContent =
+    new Set(state.filteredData.map(r => r[0])).size;
+
   renderDirectory(container);
 }
 
-search.addEventListener("input", debounce(applyFilters));
+searchInput.addEventListener("input", debounce(applyFilters, 300));
 init();
-
