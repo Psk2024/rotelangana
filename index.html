@@ -1,60 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>ESIC – Employee Directory</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <title>Employee Directory</title>
+  <style>
+    body { font-family: Arial; background:#f4f6f8; }
+    table { border-collapse: collapse; width: 100%; background:#fff; }
+    th, td { padding: 10px; border: 1px solid #ccc; }
+    th { background:#2c3e50; color:white; }
+    tr:hover { background:#f1f1f1; cursor:pointer; }
+  </style>
 </head>
 <body>
 
-  <!-- ===== HEADER ===== -->
-  <header class="app-header">
-    <div class="header-inner">
-      <div class="brand">
-        <span class="org-name">Employees’ State Insurance Corporation</span>
-        <span class="org-sub">Regional Office – Telangana</span>
-      </div>
-    </div>
+<h2>Employee Directory</h2>
 
-    <div class="summary-cards">
-      <div class="card">
-        <span>Total Employees</span>
-        <strong id="totalCount">0</strong>
-      </div>
-      <div class="card">
-        <span>Filtered Employees</span>
-        <strong id="filteredCount">0</strong>
-      </div>
-    </div>
-  </header>
+<table id="employeeTable">
+  <thead>
+    <tr>
+      <th>Employee ID</th>
+      <th>Name</th>
+      <th>Cadre</th>
+      <th>Place of Posting</th>
+      <th>Date of Joining</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
 
-  <!-- ===== FILTER BAR ===== -->
-  <section class="controls">
-    <select id="cadreSelect">
-      <option value="">All Branches</option>
-    </select>
+<script>
+const sheetId = "YOUR_SHEET_ID";
+const sheetName = "Sheet1";
+const url = `https://opensheet.elk.sh/${sheetId}/${sheetName}`;
 
-    <input
-      type="search"
-      id="searchInput"
-      placeholder="Search by Employee ID, Name, Branch…"
-    />
-  </section>
-
-  <!-- ===== MAIN CONTENT ===== -->
-  <main id="employeeTableContainer"></main>
-
-  <!-- ===== MODAL ===== -->
-  <div id="employeeModal" class="modal">
-    <div class="modal-content">
-      <button class="close-btn">&times;</button>
-      <div id="modalBody"></div>
-    </div>
-  </div>
-
-  <!-- ✅ ENTRY POINT -->
-  <script type="module" src="./js/app.js"></script>
+fetch(url)
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.querySelector("#employeeTable tbody");
+    data.forEach(emp => {
+      const row = `
+        <tr>
+          <td>${emp["Employee ID"]}</td>
+          <td>${emp["Name"]}</td>
+          <td>${emp["Cadre"]}</td>
+          <td>${emp["Place of Posting"]}</td>
+          <td>${emp["Date of Joining"]}</td>
+        </tr>`;
+      tbody.innerHTML += row;
+    });
+  });
+</script>
 
 </body>
 </html>
