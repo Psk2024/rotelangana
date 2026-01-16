@@ -1,8 +1,8 @@
 // js/config.js
 export const CONFIG = {
   SHEET: {
-    API_KEY: "YOUR_API_KEY",
-    ID: "YOUR_SPREADSHEET_ID",
+    API_KEY: "AIzaSyBLOOYaN0zUBPUkA0FyPot1QL-LFWCpEzc",
+    ID: "1a4JmwnRPvVHOh5BNOZ-F_sqspasdcowRB7uF-qScd48",
     RANGE: "Employees!A1:K"
   },
 
