@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Employee Directory</title>
-  <style>
-    body { font-family: Arial; background:#f4f6f8; }
-    table { border-collapse: collapse; width: 100%; background:#fff; }
-    th, td { padding: 10px; border: 1px solid #ccc; }
-    th { background:#2c3e50; color:white; }
-    tr:hover { background:#f1f1f1; cursor:pointer; }
-  </style>
+<meta charset="UTF-8">
+<title>Employee Details</title>
+
+<style>
+body { font-family: Arial; background:#f2f4f7; padding:20px; }
+table { width:100%; border-collapse: collapse; background:#fff; }
+th, td { padding:10px; border:1px solid #ccc; }
+th { background:#1f4e79; color:#fff; }
+tr:hover { background:#eef3f7; }
+</style>
 </head>
+
 <body>
 
 <h2>Employee Directory</h2>
 
-<table id="employeeTable">
-  <thead>
-    <tr>
-      <th>Employee ID</th>
-      <th>Name</th>
-      <th>Cadre</th>
-      <th>Place of Posting</th>
-      <th>Date of Joining</th>
-    </tr>
-  </thead>
-  <tbody></tbody>
+<table id="empTable">
+<thead>
+<tr>
+<th>Employee ID</th>
+<th>Name of the Officer / Official</th>
+<th>Designation</th>
+<th>Group</th>
+<th>Place of Posting</th>
+<th>Gender</th>
+<th>Date of Birth</th>
+<th>Date of Retirement</th>
+<th>Date of Joining (Branch)</th>
+<th>Date of Joining (Accounting Unit)</th>
+<th>Contact Details</th>
+</tr>
+</thead>
+<tbody></tbody>
 </table>
 
 <script>
@@ -34,21 +42,26 @@ const sheetName = "Employees2";
 const url = `https://opensheet.elk.sh/${sheetId}/${sheetName}`;
 
 fetch(url)
-  .then(res => res.json())
-  .then(data => {
-    const tbody = document.querySelector("#employeeTable tbody");
-    data.forEach(emp => {
-      const row = `
-        <tr>
-          <td>${emp["Employee ID"]}</td>
-          <td>${emp["Name"]}</td>
-          <td>${emp["Cadre"]}</td>
-          <td>${emp["Place of Posting"]}</td>
-          <td>${emp["Date of Joining"]}</td>
-        </tr>`;
-      tbody.innerHTML += row;
-    });
+.then(res => res.json())
+.then(data => {
+  let tbody = document.querySelector("#empTable tbody");
+  data.forEach(emp => {
+    tbody.innerHTML += `
+      <tr>
+        <td>${emp["Emp ID."]}</td>
+        <td>${emp["Emp Name."]}</td>
+        <td>${emp["Designation"]}</td>
+        <td>${emp["Group"]}</td>
+        <td>${emp["Branch"]}</td>
+        <td>${emp["Gender"]}</td>
+        <td>${emp["DoBirth"]}</td>
+        <td>${emp["Retirement"]}</td>
+        <td>${emp["DoJ (Branch)"]}</td>
+        <td>${emp["DoJ (Accounting Unit)"]}</td>
+        <td>${emp["Contact Details"]}</td>
+      </tr>`;
   });
+});
 </script>
 
 </body>
