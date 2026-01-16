@@ -2,17 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Employee Directory</title>
+  <title>ESIC – Employee Directory</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Main Styles -->
+  <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- ===== HEADER / DASHBOARD ===== -->
+  <!-- ===== HEADER ===== -->
   <header class="app-header">
-    <h1>Employee Directory</h1>
+    <div class="header-inner">
+      <div class="brand">
+        <span class="org-name">Employees’ State Insurance Corporation</span>
+        <span class="org-sub">Regional Office – Telangana</span>
+      </div>
+    </div>
 
     <div class="summary-cards">
       <div class="card">
@@ -20,13 +25,13 @@
         <strong id="totalCount">0</strong>
       </div>
       <div class="card">
-        <span>Filtered Results</span>
+        <span>Filtered Employees</span>
         <strong id="filteredCount">0</strong>
       </div>
     </div>
   </header>
 
-  <!-- ===== FILTER CONTROLS ===== -->
+  <!-- ===== FILTER BAR ===== -->
   <section class="controls">
     <select id="cadreSelect" aria-label="Filter by Branch">
       <option value="">All Branches</option>
@@ -35,17 +40,17 @@
     <input
       type="search"
       id="searchInput"
-      placeholder="Search by ID, Name, Branch…"
+      placeholder="Search by Employee ID, Name, Branch…"
       aria-label="Search employees"
     />
   </section>
 
-  <!-- ===== MAIN CONTENT ===== -->
+  <!-- ===== CONTENT ===== -->
   <main id="employeeTableContainer" aria-live="polite">
-    <!-- JS renders place-wise tables here -->
+    <!-- JS renders content -->
   </main>
 
-  <!-- ===== EMPLOYEE MODAL ===== -->
+  <!-- ===== MODAL ===== -->
   <div id="employeeModal" class="modal" role="dialog" aria-modal="true">
     <div class="modal-content">
       <button class="close-btn" aria-label="Close">&times;</button>
@@ -54,9 +59,7 @@
   </div>
 
   <!-- ===== SCRIPT ===== -->
-  <!-- Use your existing or refactored JS -->
   <script src="script.js" defer></script>
 
 </body>
 </html>
-
