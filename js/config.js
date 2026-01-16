@@ -18,7 +18,7 @@ export const CONFIG = {
     DOJ_BRANCH: 8,
     DOJ_ESIC: 9,
     CONTACT: 10
-  },
+  },   // ✅ COMMA ADDED HERE
 
   HEADER_COLORS: [
     "Tomato",
@@ -29,3 +29,4 @@ export const CONFIG = {
     "#e8eaf6"
   ]
 };
+
